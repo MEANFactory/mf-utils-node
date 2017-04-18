@@ -80,11 +80,9 @@ module.exports = {
       status: httpStatusCodes
   },
   plugins: {
-    fpl: {
       dto: {
         levels: levels,
         rules : rules
       }
-    }
   }
 };
