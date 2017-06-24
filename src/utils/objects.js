@@ -1,5 +1,4 @@
-var _       = require('lodash'),
-    arrays  = require('./arrays'),
+var arrays  = require('./arrays'),
     strings = require('./strings');
 
 module.exports = {
@@ -161,12 +160,21 @@ function getValueFromPath(obj, path) {
 
 function omit (itemOrArray, fieldOrFields) {
 
-    var items   = [].concat(itemOrArray);
-    var fields  = [].concat(fieldOrFields || []);
+    var items   = [].concat(itemOrArray).filter(function(item){
+        return (typeof item === 'object' && !(item instanceof Array));
+    });
+    var fields  = [].concat(fieldOrFields || []).filter(function(field){
+        return (typeof field === 'string' && (field.trim().length > 0));
+    });
 
     for (var i = 0; i < items.length; i += 1) {
 
-        items[i] = _.omit(items[i], fields);
+        items[i] = JSON.parse(JSON.stringify(items[i]));
+        fields.forEach(function(key){
+            if (items[i].hasOwnProperty(key)) {
+                delete items[i][key];
+            }
+        });
 
         var keys = Object.keys(items[i]);
         for (var k = 0; k < (keys || []).length; k += 1) {
