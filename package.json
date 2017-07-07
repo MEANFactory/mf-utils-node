@@ -1,6 +1,6 @@
 {
   "name": "mf-utils-node",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Helpful utilities for working with node.",
   "main": "src/index.js",
   "scripts": {
@@ -32,12 +32,12 @@
   },
   "homepage": "https://github.com/MEANFactory/mf-utils-node#readme",
   "dependencies": {
-    "async": "^2.4.1",
+    "async": "^2.5.0",
     "email-addresses": "^3.0.1",
     "gravatar": "^1.6.0",
     "jwt-simple": "^0.5.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.10.8",
+    "mongoose": "^4.11.1",
     "request": "^2.81.0",
     "uuid": "^3.1.0"
   },
