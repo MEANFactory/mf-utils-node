@@ -21,7 +21,9 @@ module.exports = {
     isValidMomentDuration: isValidMomentDuration,
 
     isValid: isValid,
-    isLeapYear: isLeapYear
+    isLeapYear: isLeapYear,
+
+    toUnixDateStamp : toUnixDateStamp
 
 };
 
@@ -59,4 +61,8 @@ function isValid (year, month, day) {
 function isLeapYear (year) {
     if (isNaN(year)) { return false; }
     return moment(year, 1, 29).isValid();
+}
+
+function toUnixDateStamp(value){
+    return isDate(value) ? moment(value).unix();
 }
