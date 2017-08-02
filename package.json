@@ -1,6 +1,6 @@
 {
   "name": "mf-utils-node",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Helpful utilities for working with node.",
   "main": "src/index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^7.4.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.4",
+    "mongoose": "^4.11.5",
     "request": "^2.81.0",
     "uuid": "^3.1.0"
   },

@@ -64,5 +64,5 @@ function isLeapYear (year) {
 }
 
 function toUnixDateStamp(value){
-    return isDate(value) ? moment(value).unix();
+    return isDate(value) ? moment(value).unix() : undefined;
 }
