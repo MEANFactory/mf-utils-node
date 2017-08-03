@@ -1,6 +1,6 @@
 {
   "name": "mf-utils-node",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Helpful utilities for working with node.",
   "main": "src/index.js",
   "scripts": {

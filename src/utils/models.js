@@ -5,7 +5,8 @@ var async   = require('async'),
 
 module.exports = {
     seed        : seed,
-    updateMany  : updateMany
+    updateMany  : updateMany,
+    updateManyValues : updateManyValues
 };
 
 function prefixError (model, err) {
@@ -83,4 +84,11 @@ function updateMany (models, done) {
     });
     if (updated.length < 1) { return done(); }
     async.parallel(updated.save, done);
+}
+function updateManyValues (items, key, value, done){
+    items = [].concat(items);
+    items.forEach(function(item){
+        item[key] = value;
+    });
+    return updateMany(items, done);
 }
