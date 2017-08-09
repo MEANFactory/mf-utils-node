@@ -11,6 +11,7 @@ module.exports = {
     EMPTY_V4        : EMPTY_V4,
     isValidUidType  : isValidUidType,
     init            : init,
+    initGuid        : initGuid,
     isValid         : isValid,
     ifValid         : ifValid,
     isValidUid      : isValidUid,
@@ -29,6 +30,9 @@ function init (uidType) {
         default:
             return null;
     }
+}
+function initGuid(){
+    return init('v4');
 }
 
 function isValidUidType (value) {

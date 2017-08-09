@@ -7,7 +7,11 @@ module.exports = {
     isNumber            : isNumber,
     isSymbol            : isSymbol,
     isValidOperation    : isValidOperation,
-    parseOperation      : parseOperation
+    parseOperation      : parseOperation,
+
+    fromBase36  : fromBase36,
+    toBase36    : toBase36,
+    nextBase36  : nextBase36
 };
 
 function isSymbol (value) {
@@ -84,4 +88,40 @@ function isValidOperation (value, isLeftRequired) {
     if (!opr) { return false; }
     if (isLeftRequired && objects.isUndefined(opr.left)) { return false; }
     return (!objects.isUndefined(opr.operation) && isNumber(opr.right));
+}
+
+function fromBase36(value){
+    if (typeof value !== 'string'){ return undefined; }
+    var result;
+    try {
+        result = parseInt(value, 36);
+    } catch (ex) {
+        return undefined;
+    }
+    return result;
+}
+function toBase36(value){
+    if (typeof value === 'number') {
+        if (!Number.isInteger(value)) { return undefined; }
+    } else if (typeof value === 'string') {
+        if (!strings.isDigits(value)) { return undefined; }
+    } else {
+        return undefined;
+    }
+    value = (typeof value === 'number') ? value : parseInt(value);
+    return value.toString(36);
+}
+function nextBase36(value){
+    if (typeof value === 'number') {
+        if (!Number.isInteger(value)) { return undefined; }
+    } else if (typeof value === 'string') {
+        if (!strings.isDigits(value)) { return undefined; }
+    } else if (typeof value === 'undefined') {
+        value = -1;
+    } else {
+        return undefined;
+    }
+    value = (typeof value === 'number') ? value : parseInt(value);
+    value++;
+    value.toString(36);
 }

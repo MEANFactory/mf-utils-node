@@ -1,6 +1,6 @@
 {
   "name": "mf-utils-node",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Helpful utilities for working with node.",
   "main": "src/index.js",
   "scripts": {
@@ -35,9 +35,9 @@
     "async": "^2.5.0",
     "email-addresses": "^3.0.1",
     "gravatar": "^1.6.0",
-    "jsonwebtoken": "^7.4.1",
+    "jsonwebtoken": "^7.4.2",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.5",
+    "mongoose": "^4.11.6",
     "request": "^2.81.0",
     "uuid": "^3.1.0"
   },
@@ -45,7 +45,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.7.0",
-    "gulp-filter": "^5.0.0",
+    "gulp-filter": "^5.0.1",
     "gulp-header": "^1.8.9",
     "gulp-if": "^2.0.2",
     "gulp-jscs": "^4.0.0",
