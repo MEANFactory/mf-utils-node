@@ -139,7 +139,7 @@ function payload_validate (value, allowExpired) {
     if (!strings.isValid(value.sub)) { return 'Missing User ID'; }
     if (value.aid && !strings.isValid(value.aid)) { return 'Invalid Account ID'; }
     if (!strings.isValid(value.iss)) { return 'Invalid Session ID'; }
-    if (typeof value.ait === 'undefined') { return 'Missing Created Date'; }
+    if (typeof value.iat === 'undefined') { return 'Missing Created Date'; }
     if (!dates.isUnixDateStamp(value.iat)) { return 'Invalid Created Date'; }
     if (typeof value.exp === 'undefined') { return 'Missing Expiry Date'; }
     if (!dates.isUnixDateStamp(value.exp)) { return 'Invalid Expiry Date'; }
