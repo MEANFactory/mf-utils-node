@@ -10,6 +10,7 @@ module.exports = {
     cleanDigits     : cleanDigits,
     cleanAlphanumeric : cleanAlphanumeric,
     cleanVersion    : cleanVersion,
+    findPrefix      : findPrefix,
     isLowerCase     : isLowerCase,
     isUpperCase     : isUpperCase,
     toCamelCase     : toCamelCase,
