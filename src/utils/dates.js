@@ -5,7 +5,7 @@ var moment = require('moment'),
     numbers = require('./numbers'),
     strings = require('./strings');
 
-var minDate = new Date(1900, 1, 1);
+var minDate = new Date(1900, 0, 1);
 
 module.exports = {
 

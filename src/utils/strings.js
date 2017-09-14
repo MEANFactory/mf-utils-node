@@ -13,12 +13,15 @@ module.exports = {
     isLowerCase     : isLowerCase,
     isUpperCase     : isUpperCase,
     toCamelCase     : toCamelCase,
+    toLowerCase     : toLowerCase,
+    toUpperCase     : toUpperCase,
     unique          : unique,
     isValid         : isValid,
     ifValid         : ifValid,
     isAlpha         : isAlpha,
     isDigits        : isDigits,
     isAlphanumeric  : isAlphanumeric,
+    isPrefix        : isPrefix,
     trim            : trim,
     unDouble        : unDouble
 };
@@ -60,10 +63,39 @@ function isLowerCase (value) {
     return (test === value);
 }
 
-function toCamelCase (value) {
-    return value.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
-      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
-    }).replace(/\s+/g, '');
+function toCamelCase (valueOrValues) {
+    var values = [].concat(valueOrValues);
+    if (values.length < 1) { return valueOrValues; }
+    for (var i = 0; i < values.length; i += 1) {
+        if (isValid(values[i])) {
+            values[i] = values[i].replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+                return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
+              }).replace(/\s+/g, '');
+        }
+    }
+    return (valueOrValues instanceof Array) ? values : values[0];
+}
+
+function toLowerCase (valueOrValues) {
+    var values = [].concat(valueOrValues);
+    if (values.length < 1) { return valueOrValues; }
+    for (var i = 0; i < values.length; i += 1) {
+        if (isValid(values[i])) {
+            values[i] = values[i].toLowerCase();
+        }
+    }
+    return (valueOrValues instanceof Array) ? values : values[0];
+}
+
+function toUpperCase (valueOrValues) {
+    var values = [].concat(valueOrValues);
+    if (values.length < 1) { return valueOrValues; }
+    for (var i = 0; i < values.length; i += 1) {
+        if (isValid(values[i])) {
+            values[i] = values[i].toUpperCase();
+        }
+    }
+    return (valueOrValues instanceof Array) ? values : values[0];
 }
 
 function isValid (value, chars, isCaseSensitive) {
@@ -123,4 +155,37 @@ function unique (values) {
 
 function trim(value) {
     return ifValid(value) ? value.trim() : undefined;
+}
+
+// -------------
+
+function findPrefix(names) {
+    
+    names = [].concat(names).filter(function(name){
+        return isValid(name);
+    });
+    if (names.length < 2) { return null; }
+
+    var test   = '';
+    var prefix = '';
+    var chars  = names[0].split('');
+    for (var i = 0; i < chars.length; i += 1) {
+        test += chars[i];
+        if (isPrefix(test, names)) {
+            prefix = test;
+        } else {
+            break;
+        }
+    }
+    return prefix;
+}
+
+function isPrefix(prefix, names) {
+    if (!isValid(prefix)){ return false; }
+    names = [].concat(names);
+    for (var i = 0; i < names.length; i += 1) {
+        if (!isValid(names[i])){ return false; }
+        if (names[i].indexOf(prefix) !== 0) { return false; }
+    }
+    return true;
 }
